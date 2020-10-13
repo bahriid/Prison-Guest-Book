@@ -22,7 +22,7 @@
 
     <body>
         <div class="home-btn d-none d-sm-block">
-            <a href="index.html" class="text-dark"><i class="fas fa-home h2"></i></a>
+            <a href="{{route('home')}}" class="text-dark"><i class="fas fa-home h2"></i></a>
         </div>
         <div class="account-pages my-5 pt-sm-5">
             <div class="container">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="card-body pt-0">
                                 <div>
-                                    <a href="index.html">
+                                    <a href="{{route('home')}}">
                                         <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
                                                 <img src="assets/images/Kejaksaan_Agung_Republik_Indonesia_new_logo1.png"
@@ -88,7 +88,7 @@
                         <div class="mt-5 text-center">
 
                             <div>
-                                <p>Already have an account ? <a href="auth-login.html"
+                                <p>Already have an account ? <a href="{{route('login')}}"
                                         class="font-weight-medium text-primary"> Login</a> </p>
                                 <p>© 2020 Mela.
                                 </p>
