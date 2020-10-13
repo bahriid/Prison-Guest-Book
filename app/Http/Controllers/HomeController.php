@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Officer;
+use App\Document;
+use App\Prisioner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $officer = Officer::count();
+        $document = Document::count();
+        $prisioner = Prisioner::count();
+
+        // return view('index');
+        return view('index', [
+            'officer' => $officer,
+            'document' => $document,
+            'prisioner' => $prisioner
+        ]);
     }
 }

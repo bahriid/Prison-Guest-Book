@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('/dashboard/prisioner', PrisionerController::class);
+Route::resource('/dashboard/officer', OfficerController::class);

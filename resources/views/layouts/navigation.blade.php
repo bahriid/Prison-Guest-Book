@@ -102,7 +102,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('prisioner.index') }}" id="topnav-dashboard"
+                                    <a class="nav-link" href="{{ route('officer.index') }}" id="topnav-dashboard"
                                         role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="bx bx-home-circle mr-2"></i>Officer
                                     </a>

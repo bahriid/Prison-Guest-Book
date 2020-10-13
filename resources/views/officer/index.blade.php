@@ -20,7 +20,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a>
                         </li>
-                        <li class="breadcrumb-item active">Tahanan</li>
+                        <li class="breadcrumb-item active">Officer</li>
                     </ol>
                 </div>
 
@@ -34,8 +34,8 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="card-title"> <a type="button" href="{{ route('prisioner.create') }}"
-                            class="btn btn-primary waves-effect waves-light">Tambah Tahanan</a>
+                    <div class="card-title"> <a type="button" href="{{ route('officer.create') }}"
+                            class="btn btn-primary waves-effect waves-light">Tambah Officer</a>
                     </div>
                     <p class="card-title-desc"></p>
 
@@ -45,39 +45,25 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th data-priority="1">Nomor Tahanan</th>
+                                        <th data-priority="1">NIP</th>
                                         <th data-priority="1">Nama</th>
-                                        <th data-priority="3">Tempat Lahir</th>
-                                        <th data-priority="3">Tanggal Lahir</th>
-                                        <th data-priority="3">Umur</th>
-                                        <th data-priority="4">Jenis Kelamin</th>
-                                        <th data-priority="2">Kebangsaan</th>
-                                        <th data-priority="2">Alamat</th>
-                                        <th data-priority="2">Agama</th>
-                                        <th data-priority="3">Pekerjaan</th>
+                                        <th data-priority="3">Jabatan</th>
                                         <th data-priority="6">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($prisioner as $item)
+                                    @forelse ($officer as $item)
                                     <tr>
                                         <td>{{$item['id']}}</td>
-                                        <td>{{$item['prisioner_number']}}</td>
+                                        <td>{{$item['nip']}}</td>
                                         <td>{{$item['name']}}</td>
-                                        <td>{{$item['birth_address']}}</td>
-                                        <td>{{$item['birth_days']}}</td>
-                                        <td>{{$item['age']}}</td>
-                                        <td>{{$item['gender']}}</td>
-                                        <td>{{$item['nasionality']}}</td>
-                                        <td>{{$item['address']}}</td>
-                                        <td>{{$item['religion']}}</td>
-                                        <td>{{$item['job']}}</td>
-                                        <td class="row button-items"> 
-                                            <a href="{{ route('prisioner.edit', $item['id']) }}"
+                                        <td>{{$item['position']}}</td>
+                                        <td class="row button-items">
+                                            <a href="{{ route('officer.edit', $item['id']) }}"
                                                 class="btn btn-success waves-effect waves-light">
                                                 Edit
                                             </a>
-                                            <form action="{{ route('prisioner.destroy', $item['id']) }}" method="POST"
+                                            <form action="{{ route('officer.destroy', $item['id']) }}" method="POST"
                                                 class="inline-block">
                                                 {!! method_field('delete') . csrf_field() !!}
                                                 <button type="submit" class="btn btn-danger">
@@ -88,7 +74,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="11" class="border text-center p-5">
+                                        <td colspan="5" class="border text-center p-5">
                                             Data Tidak Ditemukan
                                         </td>
                                     </tr>
