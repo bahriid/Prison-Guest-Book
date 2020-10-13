@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 @section('css')
 <!-- App Css-->
-<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+<link href="{{url('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -96,5 +96,5 @@
 
 @section('js')
 <!-- App js -->
-<script src="assets/js/app.js"></script>
+<script src="{{url('assets/js/app.js') }}"></script>
 @endsection

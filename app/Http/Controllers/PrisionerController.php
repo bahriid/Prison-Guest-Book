@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Prisioner;
 use Illuminate\Http\Request;
+use App\Http\Requests\PrisionerRequest;
 
 class PrisionerController extends Controller
 {
@@ -11,9 +12,19 @@ class PrisionerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $prisioner = Prisioner::paginate(10);
+
+        return view('prisioners.index', [
+            'prisioner' => $prisioner
+        ]);
     }
 
     /**
@@ -23,7 +34,7 @@ class PrisionerController extends Controller
      */
     public function create()
     {
-        //
+        return view('prisioners.create');
     }
 
     /**
@@ -32,9 +43,13 @@ class PrisionerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrisionerRequest $request)
     {
-        //
+        $data = $request->all();
+
+        Prisioner::create($data);
+
+        return redirect()->route('prisioner.index');
     }
 
     /**
@@ -54,9 +69,11 @@ class PrisionerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Prisioner $prisioner)
     {
-        //
+        return view('prisioners.edit',[
+            'item' => $prisioner
+        ]);
     }
 
     /**
@@ -66,9 +83,13 @@ class PrisionerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PrisionerRequest $request, Prisioner $prisioner)
     {
-        //
+        $data = $request->all();
+
+        $prisioner->update($data);
+
+        return redirect()->route('prisioner.index');
     }
 
     /**
@@ -77,8 +98,10 @@ class PrisionerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Prisioner $prisioner)
     {
-        //
+        $prisioner->delete();
+
+        return redirect()->route('prisioner.index');
     }
 }

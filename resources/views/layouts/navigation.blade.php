@@ -5,17 +5,17 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>@yield('title') | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>@yield('title') | Perizinan Pengunjung Penjara</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{url('assets/images/favicon.ico') }}">
 
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{{url('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
         @yield('css')
     </head>
@@ -32,19 +32,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/Group144.png" alt="" height="42">
+                                    <img src="{{url('assets/images/Group144.png') }}" alt="" height="42">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/Group144.png" alt="" height="37">
+                                    <img src="{{url('assets/images/Group144.png') }}" alt="" height="37">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/Group144.png" alt="" height="42">
+                                    <img src="{{url('assets/images/Group144.png') }}" alt="" height="42">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/Group144.png" alt="" height="39">
+                                    <img src="{{url('assets/images/Group144.png') }}" alt="" height="39">
                                 </span>
                             </a>
                         </div>
@@ -60,16 +60,21 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
-                                    alt="Header Avatar">
+                                <img class="rounded-circle header-profile-user"
+                                    src="{{url('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                                 <span class="d-none d-xl-inline-block ml-1">Admin</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
-                                <a class="dropdown-item text-danger" href="#"><i
+                                <a class="dropdown-item text-danger" href="href=" {{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i
                                         class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                                     Logout</a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
 
@@ -85,9 +90,21 @@
                             <ul class="navbar-nav">
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" id="topnav-dashboard" role="button"
+                                    <a class="nav-link" href="{{ route('home') }}" id="topnav-dashboard" role="button"
                                         aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-home-circle mr-2"></i>Dashboards
+                                        <i class="bx bx-home-circle mr-2"></i>Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('prisioner.index') }}" id="topnav-dashboard"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-home-circle mr-2"></i>Tahanan
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('prisioner.index') }}" id="topnav-dashboard"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-home-circle mr-2"></i>Officer
                                     </a>
                                 </li>
 
@@ -134,16 +151,11 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-
-
-        <script src="assets/js/pages/dashboard.init.js"></script>
-
-
+        <script src="{{url('assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{url('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+        <script src="{{url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+        <script src="{{url('assets/libs/node-waves/waves.min.js') }}"></script>
         @yield('js')
     </body>
 
