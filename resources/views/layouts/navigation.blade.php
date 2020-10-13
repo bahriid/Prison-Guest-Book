@@ -30,7 +30,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="{{ route('home') }}" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="{{url('assets/images/Group144.png') }}" alt="" height="42">
                                 </span>
@@ -39,7 +39,7 @@
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="{{ route('home') }}" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{url('assets/images/Group144.png') }}" alt="" height="42">
                                 </span>
@@ -62,7 +62,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user"
                                     src="{{url('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ml-1">Admin</span>
+                                <span class="d-none d-xl-inline-block ml-1">{{$user['name']}}</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">

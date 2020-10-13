@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $officer = Officer::count();
         $document = Document::count();
         $prisioner = Prisioner::count();
@@ -33,7 +34,9 @@ class HomeController extends Controller
         return view('index', [
             'officer' => $officer,
             'document' => $document,
-            'prisioner' => $prisioner
+            'prisioner' => $prisioner,
+            'user' => $user,
+
         ]);
     }
 }

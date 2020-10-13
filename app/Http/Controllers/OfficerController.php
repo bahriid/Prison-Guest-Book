@@ -12,12 +12,20 @@ class OfficerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
+        $user = auth()->user();
         $officer = Officer::paginate(10);
 
         return view('officer.index', [
-            'officer' => $officer
+            'officer' => $officer,
+            'user' => $user
         ]);
     }
 
@@ -28,7 +36,10 @@ class OfficerController extends Controller
      */
     public function create()
     {
-        return view('officer.create');
+        $user = auth()->user();
+        return view('officer.create', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -65,8 +76,10 @@ class OfficerController extends Controller
      */
     public function edit(Officer $officer)
     {
+        $user = auth()->user();
         return view('officer.edit',[
-            'item' => $officer
+            'item' => $officer,
+            'user' => $user
         ]);
     }
 

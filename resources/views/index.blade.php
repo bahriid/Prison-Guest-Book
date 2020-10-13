@@ -36,7 +36,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Documents</p>
-                                    <h4 class="mb-0">1,235</h4>
+                                    <h4 class="mb-0">{{$document}}</h4>
                                 </div>
 
                                 <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
@@ -54,7 +54,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Tahanan</p>
-                                    <h4 class="mb-0">123,000</h4>
+                                    <h4 class="mb-0">{{$prisioner}}</h4>
                                 </div>
 
                                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -72,7 +72,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Officer</p>
-                                    <h4 class="mb-0">162,000</h4>
+                                    <h4 class="mb-0">{{$officer}}</h4>
                                 </div>
 
                                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -90,7 +90,7 @@
     <!-- end row -->
 
 </div>
-<!-- container-fluid -->    
+<!-- container-fluid -->
 
 @endsection
 

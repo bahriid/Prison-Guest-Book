@@ -20,10 +20,12 @@ class PrisionerController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
         $prisioner = Prisioner::paginate(10);
 
         return view('prisioners.index', [
-            'prisioner' => $prisioner
+            'prisioner' => $prisioner,
+            'user' => $user
         ]);
     }
 
@@ -33,8 +35,12 @@ class PrisionerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('prisioners.create');
+    {        
+        $user = auth()->user();
+
+        return view('prisioners.create', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -71,8 +77,11 @@ class PrisionerController extends Controller
      */
     public function edit(Prisioner $prisioner)
     {
+        $user = auth()->user();
+
         return view('prisioners.edit',[
-            'item' => $prisioner
+            'item' => $prisioner,
+            'user' => $user
         ]);
     }
 
