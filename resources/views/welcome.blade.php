@@ -41,6 +41,10 @@
                                 href="{{ route('register') }}">Register</a></li>
                         @endguest
                         @auth
+                        @if($user['role'] == 'ADMIN')
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                href="{{ route('home') }}">Dashboard</a></li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Logout</a>
@@ -73,18 +77,19 @@
         </header>
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="pengajuan">
+            @guest
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Pengajuan</h2>
                     <h3 class="section-subheading text-muted">Silahkan lengkapi form dibawah ...</h3>
                 </div>
                 {{-- <div class="row"> --}}
-                <form action="{{ route('officer.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xl-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-form-label">Nama Tahanan</label>
-                            <select class="form-control" name="religion">
+                            <select class="form-control" name="prisioners_id">
                                 <option>Select</option>
                                 @foreach ($prisioners as $prisioner)
                                 <option value="{{$prisioner['id']}}">{{$prisioner['name']}}</option>
@@ -95,29 +100,36 @@
                     <div class="col-xl-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-form-label">Nama Anda</label>
-                            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}"
+                            <input class="form-control" type="text" name="name" value="{{ old('name') }}"
                                 id="example-text-input">
                         </div>
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-form-label">Alamat</label>
-                            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}"
+                            <input class="form-control" type="text" name="address" value="{{ old('address') }}"
                                 id="example-text-input">
                         </div>
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-form-label">Pekerjaan</label>
-                            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}"
+                            <input class="form-control" type="text" name="job" value="{{ old('job') }}"
                                 id="example-text-input">
                         </div>
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-form-label">Tujuan</label>
-                            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}"
+                            <input class="form-control" type="text" name="purpose" value="{{ old('purpose') }}"
                                 id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanan</label>
+                            <input class="form-control" type="text" name="relationship"
+                                value="{{ old('relationship') }}" id="example-text-input">
                         </div>
                     </div>
                     <div class="col-xl-12">
@@ -125,6 +137,80 @@
                             @guest
                             <a class="btn btn-primary btn-xl text-uppercase" href="{{ route('login') }}">Login</a>
                             @endguest
+                        </div>
+                    </div>
+
+                </form>
+                {{-- </div> --}}
+            </div>
+            @endguest
+            @auth
+            @if($user['role'] == 'ADMIN')
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Welcome Admin</h2>
+                    <h3 class="section-subheading text-muted">Silahkan masuk dashboard pada menu yang telah disediakan
+                        ...</h3>
+                </div>
+            </div>
+            @else
+            @if(!($document['user_id']))
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Pengajuan</h2>
+                    <h3 class="section-subheading text-muted">Silahkan lengkapi form dibawah ...</h3>
+                </div>
+                {{-- <div class="row"> --}}
+                <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Nama Tahanan</label>
+                            <select class="form-control" name="prisioners_id">
+                                <option>Select</option>
+                                @foreach ($prisioners as $prisioner)
+                                <option value="{{$prisioner['id']}}">{{$prisioner['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Nama Anda</label>
+                            <input class="form-control" type="text" name="name" value="{{ old('name') }}"
+                                id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Alamat</label>
+                            <input class="form-control" type="text" name="address" value="{{ old('address') }}"
+                                id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Pekerjaan</label>
+                            <input class="form-control" type="text" name="job" value="{{ old('job') }}"
+                                id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Tujuan</label>
+                            <input class="form-control" type="text" name="purpose" value="{{ old('purpose') }}"
+                                id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanan</label>
+                            <input class="form-control" type="text" name="relationship"
+                                value="{{ old('relationship') }}" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
                             @auth
                             <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton"
                                 type="submit">Ajukan</button>
@@ -135,6 +221,17 @@
                 </form>
                 {{-- </div> --}}
             </div>
+            @else
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Halo, {{$user['name']}}</h2>
+                    <h3 class="section-subheading text-muted">Status pengajuan anda adalah : {{$document['status']}}
+                    </h3>
+                </div>
+            </div>
+            @endif
+            @endif
+            @endauth
         </section>
         <!-- Contact-->
         <section class="page-section" id="contact">

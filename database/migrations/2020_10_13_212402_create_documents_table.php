@@ -17,8 +17,10 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->integer('prisioners_id')->nullable()->index();
             $table->integer('officers_id')->nullable()->index();
+            $table->integer('user_id')->nullable()->index();
             $table->string('name');
             $table->string('address');
+            $table->string('status')->default('PENDING')->index();
             $table->string('job');
             $table->string('relationship');
             $table->string('purpose');

@@ -72,7 +72,7 @@
                                         <td>{{$item['address']}}</td>
                                         <td>{{$item['religion']}}</td>
                                         <td>{{$item['job']}}</td>
-                                        <td class="row button-items"> 
+                                        <td class="row button-items">
                                             <a href="{{ route('prisioner.edit', $item['id']) }}"
                                                 class="btn btn-success waves-effect waves-light">
                                                 Edit

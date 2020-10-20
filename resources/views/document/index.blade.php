@@ -1,5 +1,5 @@
 @extends('layouts.navigation')
-@section('title', 'Tahanan')
+@section('title', 'Document')
 @section('css')
 <!-- Responsive Table css -->
 <link href="{{url('assets/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a>
                         </li>
-                        <li class="breadcrumb-item active">Tahanan</li>
+                        <li class="breadcrumb-item active">Document</li>
                     </ol>
                 </div>
 
@@ -34,8 +34,9 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="card-title"> <a type="button" href="{{ route('prisioner.create') }}"
-                            class="btn btn-primary waves-effect waves-light">Tambah Tahanan</a>
+                    <div class="card-title">
+                        {{-- <a type="button" href="{{ route('prisioner.create') }}"
+                        class="btn btn-primary waves-effect waves-light">Tambah Tahanan</a> --}}
                     </div>
                     <p class="card-title-desc"></p>
 
@@ -45,40 +46,47 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th data-priority="1">Nomor Tahanan</th>
-                                        <th data-priority="1">Nama</th>
-                                        <th data-priority="3">Tempat Lahir</th>
-                                        <th data-priority="3">Tanggal Lahir</th>
-                                        <th data-priority="3">Umur</th>
-                                        <th data-priority="4">Jenis Kelamin</th>
-                                        <th data-priority="2">Kebangsaan</th>
-                                        <th data-priority="2">Alamat</th>
-                                        <th data-priority="2">Agama</th>
+                                        <th data-priority="1">Nama Tahanan</th>
+                                        <th data-priority="1">Penanggung Jawab</th>
+                                        <th data-priority="3">Nama</th>
+                                        <th data-priority="3">Alamat</th>
                                         <th data-priority="3">Pekerjaan</th>
+                                        <th data-priority="4">Tujuan</th>
+                                        <th data-priority="2">Hubungan</th>
+                                        <th data-priority="2">Tanggal Berakhir</th>
+                                        <th data-priority="6">Status</th>
                                         <th data-priority="6">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($prisioner as $item)
+                                    @forelse ($document as $item)
                                     <tr>
                                         <td>{{$item['id']}}</td>
-                                        <td>{{$item['prisioner_number']}}</td>
+                                        <td>{{$item['prisioner']['name']}}</td>
+                                        <td>{{$item['officer']['name']}}</td>
                                         <td>{{$item['name']}}</td>
-                                        <td>{{$item['birth_address']}}</td>
-                                        <td>{{$item['birth_days']}}</td>
-                                        <td>{{$item['age']}}</td>
-                                        <td>{{$item['gender']}}</td>
-                                        <td>{{$item['nasionality']}}</td>
                                         <td>{{$item['address']}}</td>
-                                        <td>{{$item['religion']}}</td>
                                         <td>{{$item['job']}}</td>
-                                        <td class="row button-items"> 
-                                            <a href="{{ route('prisioner.edit', $item['id']) }}"
+                                        <td>{{$item['purpose']}}</td>
+                                        <td>{{$item['relationship']}}</td>
+                                        <td>{{$item['expired']}}</td>
+                                        <td>{{$item['status']}}</td>
+                                        <td class="row button-items">
+                                            @if($item['status'] == 'PENDING')
+                                            <a href="{{ route('dashboard.document.show', $item['id']) }}"
                                                 class="btn btn-success waves-effect waves-light">
-                                                Edit
+                                                Setujui
                                             </a>
-                                            <form action="{{ route('prisioner.destroy', $item['id']) }}" method="POST"
-                                                class="inline-block">
+                                            @else
+                                            <a class="btn btn-success waves-effect waves-light">
+                                                Kirim PDF
+                                            </a>
+                                            <a class="btn btn-info waves-effect waves-light">
+                                                Lihat PDF
+                                            </a>
+                                            @endif
+                                            <form action="{{ route('dashboard.document.destroy', $item['id']) }}"
+                                                method="POST" class="inline-block">
                                                 {!! method_field('delete') . csrf_field() !!}
                                                 <button type="submit" class="btn btn-danger">
                                                     Delete
@@ -88,7 +96,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="11" class="border text-center p-5">
+                                        <td colspan="12" class="border text-center p-5">
                                             Data Tidak Ditemukan
                                         </td>
                                     </tr>

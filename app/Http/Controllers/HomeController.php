@@ -30,13 +30,16 @@ class HomeController extends Controller
         $document = Document::count();
         $prisioner = Prisioner::count();
 
-        // return view('index');
-        return view('index', [
-            'officer' => $officer,
-            'document' => $document,
-            'prisioner' => $prisioner,
-            'user' => $user,
-
-        ]);
+        if($user['role'] == 'ADMIN'){
+            return view('index', [
+                'officer' => $officer,
+                'document' => $document,
+                'prisioner' => $prisioner,
+                'user' => $user,
+            ]);
+        }else{
+            return redirect()->route('index');
+        }
+       
     }
 }
