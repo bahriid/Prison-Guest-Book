@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'HomePageController@index')->name('index');
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('/dashboard/prisioner', PrisionerController::class);
 Route::resource('/dashboard/officer', OfficerController::class);
+// Route::get('/dashboard/document', )
