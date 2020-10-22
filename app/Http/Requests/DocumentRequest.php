@@ -30,6 +30,7 @@ class DocumentRequest extends FormRequest
             'purposes' => 'required|string|max:255',
             'relationship' => 'required|string|max:255',
             'job' => 'required|string|max:255',
+            'nomorhp' => 'required|string|max:255',
         ];
     }
 }

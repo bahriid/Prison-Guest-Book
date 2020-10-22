@@ -127,9 +127,16 @@
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanan</label>
+                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanans</label>
                             <input class="form-control" type="text" name="relationship"
                                 value="{{ old('relationship') }}" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Nomor WhatsApp</label>
+                            <input class="form-control" type="text" name="nomorhp" value="{{ old('nomorhp') }}"
+                                id="example-text-input">
                         </div>
                     </div>
                     <div class="col-xl-12">

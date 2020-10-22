@@ -23,6 +23,7 @@ class CreateDocumentsTable extends Migration
             $table->string('status')->default('PENDING')->index();
             $table->string('job');
             $table->string('relationship');
+            $table->string('nomorhp');
             $table->string('purpose');
             $table->date('expired');
             $table->timestamps();
