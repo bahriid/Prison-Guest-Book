@@ -89,7 +89,8 @@
                                             @endif
                                             <form action="{{ route('dashboard.document.destroy', $item['id']) }}"
                                                 method="POST" class="inline-block">
-                                                {!! method_field('delete') . csrf_field() !!}
+                                                @method('POST')
+                                                @csrf
                                                 <button type="submit" class="btn btn-danger">
                                                     Delete
                                                 </button>

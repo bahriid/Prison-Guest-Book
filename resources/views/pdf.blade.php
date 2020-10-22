@@ -239,25 +239,25 @@
     </table>
     <script src="{{url('assets/js/dist/html2pdf.bundle.min.js') }}"></script>
     <script type="text/javascript">
-        // var element = document.getElementsByTagName('body')[0];
-        // var opt = {
-        //     margin: 3,
-        //     html2canvas:  { scale: 4 },
-        //     pagebreak: {mode: ['css', 'legacy']},
-        // };
-        // html2pdf().set(opt).from(element).toPdf().save('my_document.pdf');
-
-        window.onload = function() { window.print(); }
-      (function() {
-        const beforePrint = function() {
+        var element = document.getElementsByTagName('body')[0];
+        var opt = {
+            margin: 3,
+            html2canvas:  { scale: 4 },
+            pagebreak: {mode: ['css', 'legacy']},
         };
+        html2pdf().set(opt).from(element).toPdf().save('Surat_Pengajuan.pdf');
 
-        const afterPrint = function() {
-          window.close();
-        };
-        window.onbeforeprint = beforePrint;
-        window.onafterprint = afterPrint;
-      }());
+    //     window.onload = function() { window.print(); }
+    //   (function() {
+    //     const beforePrint = function() {
+    //     };
+
+    //     const afterPrint = function() {
+    //       window.close();
+    //     };
+    //     window.onbeforeprint = beforePrint;
+    //     window.onafterprint = afterPrint;
+    //   }());
     </script>
     <!--Table-->
 </body>

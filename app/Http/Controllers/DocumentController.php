@@ -64,8 +64,9 @@ class DocumentController extends Controller
 
     }
 
-    public function destroy(Document $document)
+    public function destroy($id)
     {
+        $document = Document::where('id', $id)->first();
         $document->delete();
 
         return redirect()->route('dashboard.document');

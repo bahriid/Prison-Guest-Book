@@ -55,7 +55,7 @@
                     <form action="{{ route('dashboard.document.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Jenis Kelamin</label>
+                            <label class="col-md-2 col-form-label">Pilih Penanggung Jawab</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="hidden" name="id" value="{{ $document['id'] }}"
                                     id="example-text-input">
