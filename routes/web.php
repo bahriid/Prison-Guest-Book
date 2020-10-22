@@ -30,6 +30,7 @@ Route::resource('/dashboard/prisioner', PrisionerController::class);
 Route::resource('/dashboard/officer', OfficerController::class);
 Route::post('/document/store', 'HomePageController@store')->name('document.store');
 Route::get('/pdf/{id}', 'HomePageController@pdf')->name('document.pdf');
+Route::get('/sendpdf/{id}', 'HomePageController@sendpdf')->name('document.sendpdf');
 // Route::get('/qurban/edit/{id}', 'QurbanController@edit')->name('qurban.edit');
 
 // Route::get('/dashboard/document', )

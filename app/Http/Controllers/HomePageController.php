@@ -5,9 +5,11 @@ use App\Officer;
 use App\Http\Requests\DocumentRequest;
 use App\Document;
 use App\Prisioner;
+use App\User;
 use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class HomePageController extends Controller
 {
@@ -52,12 +54,20 @@ class HomePageController extends Controller
 
     public function pdf($id){
         $data = Document::where('user_id', $id)->with('officer', 'prisioner')->first();
-        $pdf = PDF::loadView('pdf', ['data' => $data]);  
-        return $pdf->stream('medium.pdf');
-        // return view('pdf', [ 
-        //     'data' => $data,
-        // ]);
+        // $pdf = PDF::loadView('pdf', ['data' => $data]);  
+        // return $pdf->stream('medium.pdf');
+        return view('pdf', [ 
+            'data' => $data,
+        ]);
         // return view('pdf');
+    }
+
+    public function sendpdf($id){
+        // $data = Document::where('user_id', $id)->with('officer', 'prisioner')->first();
+        $user = Document::where('user_id', $id)->first();
+        
+        $url = "https://wa.me/".$user['nomorhp']."?text=Halo%2C Pengajuan anda telah selesai%2C silahkan login ulang dan print surat pengajuan anda. Terimakasih";
+        return Redirect::to($url);
         
     }
 }

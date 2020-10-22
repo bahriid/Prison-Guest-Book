@@ -70,10 +70,14 @@
             border-bottom: 1px solid black;
         }
 
+        body {
+            background-color: white;
+        }
+
     </style>
 </head>
 
-<body>
+<body id="content">
     <!--Table-->
     <table id="tablePreview" class="table table-borderless">
 
@@ -221,17 +225,39 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" id="testdiv2">
+            <td colspan="3" id="testdiv2">
                 <div class="textStyle7">Tembusan :</div>
                 <div class="textStyle6">1. Jaksa Penuntut Umum (AD HOC)</div>
                 <div class="textStyle6">2. ......</div>
                 <div class="textStyle6">3. Arsip.</div>
             </td>
-            <td colspan="4">
+            <td colspan="3">
                 <div class="textStyle5">&nbsp;</div>
                 <div class="textStyle5">&nbsp;</div>
             </td>
         </tr>
     </table>
+    <script src="{{url('assets/js/dist/html2pdf.bundle.min.js') }}"></script>
+    <script type="text/javascript">
+        // var element = document.getElementsByTagName('body')[0];
+        // var opt = {
+        //     margin: 3,
+        //     html2canvas:  { scale: 4 },
+        //     pagebreak: {mode: ['css', 'legacy']},
+        // };
+        // html2pdf().set(opt).from(element).toPdf().save('my_document.pdf');
+
+        window.onload = function() { window.print(); }
+      (function() {
+        const beforePrint = function() {
+        };
+
+        const afterPrint = function() {
+          window.close();
+        };
+        window.onbeforeprint = beforePrint;
+        window.onafterprint = afterPrint;
+      }());
+    </script>
     <!--Table-->
 </body>

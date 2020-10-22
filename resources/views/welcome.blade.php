@@ -227,6 +227,9 @@
                     <h2 class="section-heading text-uppercase">Halo, {{$user['name']}}</h2>
                     <h3 class="section-subheading text-muted">Status pengajuan anda adalah : {{$document['status']}}
                     </h3>
+                    <a class="btn btn-primary btn-xl text-uppercase"
+                        href="{{ route('document.pdf', $document['user_id']) }}">Print /
+                        Download</a>
                 </div>
             </div>
             @endif

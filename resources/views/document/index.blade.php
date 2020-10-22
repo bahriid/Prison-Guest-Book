@@ -78,7 +78,7 @@
                                                 Setujui
                                             </a>
                                             @else
-                                            <a href="{{ route('document.pdf', $item['user_id']) }}"
+                                            <a href="{{ route('document.sendpdf', $item['user_id']) }}"
                                                 class="btn btn-success waves-effect waves-light">
                                                 Kirim PDF
                                             </a>
