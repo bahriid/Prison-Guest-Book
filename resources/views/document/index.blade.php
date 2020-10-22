@@ -78,10 +78,12 @@
                                                 Setujui
                                             </a>
                                             @else
-                                            <a class="btn btn-success waves-effect waves-light">
+                                            <a href="{{ route('document.pdf', $item['user_id']) }}"
+                                                class="btn btn-success waves-effect waves-light">
                                                 Kirim PDF
                                             </a>
-                                            <a class="btn btn-info waves-effect waves-light">
+                                            <a href="{{ route('document.pdf', $item['user_id']) }}"
+                                                class="btn btn-info waves-effect waves-light">
                                                 Lihat PDF
                                             </a>
                                             @endif

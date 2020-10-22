@@ -23,6 +23,7 @@ class CreatePrisionersTable extends Migration
             $table->string('nasionality');
             $table->string('address');
             $table->string('religion');
+            $table->string('education');
             $table->string('job');
             $table->string('prisioner_number');
             $table->timestamps();

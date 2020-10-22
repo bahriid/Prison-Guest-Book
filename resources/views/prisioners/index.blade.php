@@ -55,6 +55,7 @@
                                         <th data-priority="2">Alamat</th>
                                         <th data-priority="2">Agama</th>
                                         <th data-priority="3">Pekerjaan</th>
+                                        <th data-priority="6">Pendidikan</th>
                                         <th data-priority="6">Action</th>
                                     </tr>
                                 </thead>
@@ -72,6 +73,7 @@
                                         <td>{{$item['address']}}</td>
                                         <td>{{$item['religion']}}</td>
                                         <td>{{$item['job']}}</td>
+                                        <td>{{$item['education']}}</td>
                                         <td class="row button-items">
                                             <a href="{{ route('prisioner.edit', $item['id']) }}"
                                                 class="btn btn-success waves-effect waves-light">

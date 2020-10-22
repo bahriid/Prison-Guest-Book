@@ -34,6 +34,7 @@ class PrisionerRequest extends FormRequest
             'address' => 'required|string|max:255',
             'religion' => 'required|string|max:255',
             'job' => 'required|string|max:255',
+            'education' => 'required|string|max:255',
         ];
     }
 }

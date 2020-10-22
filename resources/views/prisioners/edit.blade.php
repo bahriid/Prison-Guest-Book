@@ -137,6 +137,13 @@
                                     value="{{ old('job') ?? $item['job'] }}" id="example-text-input">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-md-2 col-form-label">Pendidikan</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" name="education"
+                                    value="{{ old('education') ?? $item['education'] }}" id="example-text-input">
+                            </div>
+                        </div>
 
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
