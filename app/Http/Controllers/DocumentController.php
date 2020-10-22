@@ -57,7 +57,7 @@ class DocumentController extends Controller
         $user = auth()->user();
         $officer = Officer::get();
         $document = Document::where('id', $request['id'])->first();
-        $document['status'] = 'DISETUJUI';
+        $document['status'] = 'APPROVED';
         $document['officers_id'] = $request['officer_id'];
         $document->save();
         return redirect()->route('dashboard.document');

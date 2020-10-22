@@ -127,7 +127,7 @@
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanans</label>
+                            <label for="example-text-input" class="col-form-label">hubungan dengan tahanan</label>
                             <input class="form-control" type="text" name="relationship"
                                 value="{{ old('relationship') }}" id="example-text-input">
                         </div>
@@ -218,6 +218,13 @@
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group row">
+                            <label for="example-text-input" class="col-form-label">Nomor WhatsApp</label>
+                            <input class="form-control" type="text" name="nomorhp" value="{{ old('nomorhp') }}"
+                                id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group row">
                             @auth
                             <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton"
                                 type="submit">Ajukan</button>
@@ -231,12 +238,16 @@
             @else
             <div class="container">
                 <div class="text-center">
+
                     <h2 class="section-heading text-uppercase">Halo, {{$user['name']}}</h2>
                     <h3 class="section-subheading text-muted">Status pengajuan anda adalah : {{$document['status']}}
                     </h3>
+                    @if ($document['status'] == 'APPROVED')
                     <a class="btn btn-primary btn-xl text-uppercase"
                         href="{{ route('document.pdf', $document['user_id']) }}">Print /
                         Download</a>
+                    @endif
+
                 </div>
             </div>
             @endif
